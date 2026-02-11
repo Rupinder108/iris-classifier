@@ -52,3 +52,18 @@ plt.close()
 joblib.dump(model, "outputs/model.joblib")
 print("Confusion matrix saved to outputs/confusion_matrix.png")
 print("Model saved to outputs/model.joblib")
+
+import joblib
+import numpy as np
+
+# Verify saved model
+loaded_model = joblib.load("outputs/model.joblib")
+
+# Make a sample prediction (using first row of test set as example)
+sample_input = X_test[0].reshape(1, -1)  # reshape to 2D
+sample_prediction = loaded_model.predict(sample_input)
+
+print("\n Model verification:")
+print("Sample input:", sample_input)
+print("Prediction from loaded model:", sample_prediction)
+print("True label:", y_test[0])
